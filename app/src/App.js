@@ -14,6 +14,7 @@ const App = () => {
 
   React.useEffect(() =>{
     getTemps()
+    setInterval(getTemps, 3000)
   }, [])
 
   return (
