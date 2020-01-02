@@ -8,7 +8,6 @@ const App = () => {
   const getTemps = (event) => {
     axios.get('/api/probes/temps')
       .then((res) => {
-        console.log(res.data)
         setFb(res.data)
       })
   }

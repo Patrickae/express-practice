@@ -25,7 +25,6 @@ router
 		axios.get(`https://fireboard.io/api/v1/devices/${process.env.FBDEVICE}/temps.json`, 
       {headers: {Authorization: `Token ${process.env.FBID}`}})
     .then((response) => {
-      console.log(response.data)
       res.send(response.data)
     })
 	})
