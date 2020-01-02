@@ -1,6 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const app = express();
+const path = require('path');
 
  app.get('/api/probes/temps', (req, res) => {
  	axios.get(`https://fireboard.io/api/v1/devices/${process.env.FBDEVICE}/temps.json`, 
@@ -20,8 +21,11 @@ const app = express();
   res.json(customers);
 });
 
-
-
+const root = require('path').join(__dirname, 'app', 'build')
+app.use(express.static(root));
+app.get("*", (req, res) => {
+    res.sendFile('index.html', { root });
+})
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => `Server running on port ${port}`);
